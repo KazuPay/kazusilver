@@ -1,4 +1,4 @@
-![KazuSilver](./img/logo-extended.png)
+![KazuSilver](./img/kazusilver.jpg)
 
 This is the working repository for KazuSilver 1.0.1,  a fork of NavCoin 4.4.0 (which is a fork of bitcoin-core 0.13 🙂)
 
@@ -12,11 +12,13 @@ https://www.kazucoin.io
 |:-----------|:-----------|
 | Block Spacing | `30 seconds` |
 | Stake Minimum Age | `2 hours` |
-| Stake Reward | `4% per annum` |
-| Port | `33440` |
-| RPC Port | `33444` |
+| Stake Reward First Year| `9% per month` |
+| Stake Reward Second Year| `7% per month` |
+| Stake Reward 3+ Years| `5% per month` |
+| Port | `33445` |
+| RPC Port | `23443` |
 
-## Altitech Settings (Anonymous Transactions)
+## Kazutech Settings (Anonymous Transactions)
 
 | Specification | Value |
 |:-----------|:-----------|
