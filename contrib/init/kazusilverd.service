@@ -1,0 +1,22 @@
+[Unit]
+Description=KazuSilver's distributed currency daemon
+After=network.target
+
+[Service]
+User=kazusilver
+Group=kazusilver
+
+Type=forking
+PIDFile=/var/lib/kazusilverd/kazusilverd.pid
+ExecStart=/usr/bin/kazusilverd -daemon -pid=/var/lib/kazusilverd/kazusilverd.pid \
+-conf=/etc/kazusilver/kazusilver.conf -datadir=/var/lib/kazusilverd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

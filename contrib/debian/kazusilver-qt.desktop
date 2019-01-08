@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=KazuSilver
+Comment=KazuSilver P2P Cryptocurrency
+Comment[fr]=KazuSilver, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=KazuSilver, eşten eşe kriptografik sanal para birimi
+Exec=kazusilver-qt %u
+Terminal=false
+Type=Application
+Icon=kazusilver128
+MimeType=x-scheme-handler/kazusilver;
+Categories=Office;Finance;

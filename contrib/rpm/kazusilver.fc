@@ -1,0 +1,8 @@
+/usr/bin/kazusilver-cli		--	gen_context(system_u:object_r:kazusilver_exec_t,s0)
+/usr/sbin/kazusilverd		--	gen_context(system_u:object_r:kazusilver_exec_t,s0)
+/usr/lib(64)?/kazusilver/kazusilverd		--	gen_context(system_u:object_r:kazusilver_exec_t,s0)
+
+/etc/kazusilver(/.*)?		gen_context(system_u:object_r:kazusilver_conf_t,s0)
+/var/lib/kazusilver(/.*)?		gen_context(system_u:object_r:kazusilver_var_lib_t,s0)
+
+(/var)?/run/kazusilverd(/.*)?   gen_context(system_u:object_r:kazusilver_var_run_t,s0)

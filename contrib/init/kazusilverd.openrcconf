@@ -1,0 +1,33 @@
+# /etc/conf.d/kazusilverd: config file for /etc/init.d/kazusilverd
+
+# Config file location
+#KSLVCOIND_CONFIGFILE="/etc/kazusilver/kazusilver.conf"
+
+# What directory to write pidfile to?  (created and owned by $KSLVCOIND_USER)
+#KSLVCOIND_PIDDIR="/var/run/kazusilverd"
+
+# What filename to give the pidfile
+#KSLVCOIND_PIDFILE="${KSLVCOIND_PIDDIR}/kazusilverd.pid"
+
+# Where to write kazusilverd data (be mindful that the blockchain is large)
+#KSLVCOIND_DATADIR="/var/lib/kazusilverd"
+
+# User and group to own kazusilverd process
+#KSLVCOIND_USER="kazusilver"
+#KSLVCOIND_GROUP="kazusilver"
+
+# Path to kazusilverd executable
+#KSLVCOIND_BIN="/usr/bin/kazusilverd"
+
+# Nice value to run kazusilverd under
+#KSLVCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+KSLVCOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for kazusilverd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+KSLVCOIND_SIGTERM_TIMEOUT=60

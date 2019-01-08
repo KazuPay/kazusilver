@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  kazusilverd The kazusilver core server.
+#
+#
+# chkconfig: 345 80 20
+# description: kazusilverd
+# processname: kazusilverd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/kazusilverd, see below
+if [ -f /etc/sysconfig/kazusilverd ]; then
+        . /etc/sysconfig/kazusilverd
+fi
+
+RETVAL=0
+
+prog=kazusilverd
+# you can override the lockfile via KSLVCOIND_LOCKFILE in /etc/sysconfig/kazusilverd
+lockfile=${KSLVCOIND_LOCKFILE-/var/lock/subsys/kazusilverd}
+
+# kazusilverd defaults to /usr/bin/kazusilverd, override with KSLVCOIND_BIN
+kazusilverd=${KSLVCOIND_BIN-/usr/bin/kazusilverd}
+
+# kazusilverd opts default to -disablewallet, override with KSLVCOIND_OPTS
+kazusilverd_opts=${KSLVCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $kazusilverd $kazusilverd_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,81 @@
+policy_module(kazusilver, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type kazusilver_t;
+type kazusilver_exec_t;
+init_daemon_domain(kazusilver_t, kazusilver_exec_t)
+
+permissive kazusilver_t;
+
+type kazusilver_initrc_exec_t;
+init_script_file(kazusilver_initrc_exec_t)
+
+type kazusilver_conf_t;
+files_type(kazusilver_conf_t)
+
+type kazusilver_var_lib_t;
+files_type(kazusilver_var_lib_t)
+
+type kazusilver_var_run_t;
+files_type(kazusilver_var_run_t)
+
+type kazusilver_port_t;
+corenet_port(kazusilver_port_t)
+
+########################################
+#
+# kazusilver local policy
+#
+allow kazusilver_t self:process { fork };
+
+allow kazusilver_t self:fifo_file rw_fifo_file_perms;
+allow kazusilver_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(kazusilver_t, kazusilver_conf_t, kazusilver_conf_t)
+manage_files_pattern(kazusilver_t, kazusilver_conf_t, kazusilver_conf_t)
+
+manage_dirs_pattern(kazusilver_t, kazusilver_var_lib_t, kazusilver_var_lib_t)
+manage_files_pattern(kazusilver_t, kazusilver_var_lib_t, kazusilver_var_lib_t)
+files_var_lib_filetrans(kazusilver_t, kazusilver_var_lib_t, { dir file })
+
+manage_dirs_pattern(kazusilver_t, kazusilver_var_run_t, kazusilver_var_run_t)
+manage_files_pattern(kazusilver_t, kazusilver_var_run_t, kazusilver_var_run_t)
+
+sysnet_dns_name_resolve(kazusilver_t)
+corenet_all_recvfrom_unlabeled(kazusilver_t)
+
+allow kazusilver_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(kazusilver_t)
+corenet_tcp_sendrecv_generic_node(kazusilver_t)
+corenet_tcp_sendrecv_all_ports(kazusilver_t)
+corenet_tcp_bind_generic_node(kazusilver_t)
+
+gen_require(`
+    type kazusilver_port_t;
+')
+allow kazusilver_t kazusilver_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type kazusilver_port_t;
+')
+allow kazusilver_t kazusilver_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(kazusilver_t)
+
+files_read_etc_files(kazusilver_t)
+
+miscfiles_read_localization(kazusilver_t)
+
+sysnet_dns_name_resolve(kazusilver_t)
+
+allow kazusilver_t kazusilver_exec_t:file execute_no_trans;
+allow kazusilver_t self:process setsched;
+corecmd_exec_ls(kazusilver_t)
+corenet_tcp_connect_http_port(kazusilver_t)
+dev_read_urand(kazusilver_t)
+fs_getattr_xattr_fs(kazusilver_t)
+kernel_read_system_state(kazusilver_t)
