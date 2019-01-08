@@ -385,7 +385,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x000059d1ec18833b41c8b8fa36e528cfe6193d518cb45373a50453ecf19e8d57");
+        consensus.BIP34Hash = uint256S("0x000026eff60670c77d64685fdd65ec67d5833fd84695fad3198bea2059c19104");
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
         consensus.nPowTargetTimespan = 30;
         consensus.nPowTargetSpacing = 30;
@@ -480,9 +480,9 @@ public:
         // 2) Rebuild
         // 3) Launch daemon. It'll calculate the new parameters.
         // 4) Update the following variables with the new values:
-        uint256 hashGenesisBlock = uint256S("0x000059d1ec18833b41c8b8fa36e528cfe6193d518cb45373a50453ecf19e8d57");
-        uint256 hashMerkleRoot = uint256S("0x9c5341a1c1ebe35ba44bbe2037e68d58859e39d6058c86b1137bc11446ee1f06");
-        uint32_t nNonce = 2043257161;
+        uint256 hashGenesisBlock = uint256S("0x000026eff60670c77d64685fdd65ec67d5833fd84695fad3198bea2059c19104");
+        uint256 hashMerkleRoot = uint256S("0xdaf6febad461825e6ad9a0e5cae9ac977111bcf6860f233ee245ccb8013951d3");
+        uint32_t nNonce = 2043262147;
         // 5) Rebuild. Launch daemon.
         // 6) Generate first block using RPC command "./kazusilver-cli generate 1"
 
@@ -503,8 +503,7 @@ public:
             printf("use the new values to update CDevNetParams class in src/chainparams.cpp\n");
         }
 
-        vSeeds.push_back(CDNSSeedData("devnav.community", "devseed.nav.community"));
-        vSeeds.push_back(CDNSSeedData("devnet.kazusilver.org", "devseed.kazusilver.org"));
+        vSeeds.push_back(CDNSSeedData("devnet.kazuexplore.com", "devseed.kazuexplore.com"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
         assert(genesis.hashMerkleRoot == hashMerkleRoot);
