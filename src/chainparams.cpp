@@ -89,7 +89,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x0000a8c208f18a02be4d4acdbb463ec1753f9c6ae5cdf4ffcd09c222fb3bc978"); // Add genesis here
+        consensus.BIP34Hash = uint256S("0x00002f5951af86d668369e0c2ca13ba2e3ecbab9eb00ee5a94e5ee49d8a2918e"); // Add genesis here
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
         consensus.nPowTargetTimespan = 30;
         consensus.nPowTargetSpacing = 30;
@@ -187,24 +187,12 @@ public:
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 16);
 
-        genesis = CreateGenesisBlock(1546910187, 49209, 0x1f00ffff, 1, 0); // update nonce - 2nd value
+        genesis = CreateGenesisBlock(1546910187, 244658, 0x1f00ffff, 1, 0); // update nonce - 2nd value
 
 	    consensus.hashGenesisBlock = genesis.GetHash();
 
-        if (true && (genesis.GetHash() != hashGenesisBlock || genesis.hashMerkleRoot != hashMerkleRoot))
-        {
-            printf("recalculating params for mainnet.\n");
-            printf("old mainnet genesis nonce: %d\n", genesis.nNonce);
-            printf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
-            // deliberately empty for loop finds nonce value.
-            for(; genesis.GetHash() > consensus.powLimit; genesis.nNonce++){ }
-            printf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-            printf("new mainnet genesis nonce: %d\n", genesis.nNonce);
-            printf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-        }
-
-        assert(consensus.hashGenesisBlock == uint256S("0x0000a8c208f18a02be4d4acdbb463ec1753f9c6ae5cdf4ffcd09c222fb3bc978")); // todo change
-        assert(genesis.hashMerkleRoot == uint256S("0x87d4a23f77cff6d49cb6fa419413170517913825fc5b8587c2a66d474bbd3345")); // updated
+        assert(consensus.hashGenesisBlock == uint256S("0x00002f5951af86d668369e0c2ca13ba2e3ecbab9eb00ee5a94e5ee49d8a2918e")); // todo change
+        assert(genesis.hashMerkleRoot == uint256S("0xb39908dcb561c5c197f3eec9a1665494b96b846686d0606d358de7ba09b2df33")); // updated
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63); // 63 = S
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
@@ -224,7 +212,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x0000a8c208f18a02be4d4acdbb463ec1753f9c6ae5cdf4ffcd09c222fb3bc978")), // Genesis
+            ( 0, uint256S("0x00002f5951af86d668369e0c2ca13ba2e3ecbab9eb00ee5a94e5ee49d8a2918e")), // Genesis
             1546910187, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -246,7 +234,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000d4f721219c9e6432e13ebb56ca6cf50032993a079eaa778e12cd4e94373"); // put testnet genesis here
+        consensus.BIP34Hash = uint256S("0x0000230ae43bcba253c50a0887379c75f2dbe9b26dfb47d51d2557189a9cbc4f"); // put testnet genesis here
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
         consensus.nPowTargetTimespan = 30;
         consensus.nPowTargetSpacing = 30;
@@ -334,9 +322,9 @@ public:
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 16);
     
         uint32_t nTimestamp = 1546910188;
-        uint256 hashGenesisBlock = uint256S("0x00000d4f721219c9e6432e13ebb56ca6cf50032993a079eaa778e12cd4e94373"); // todo - update
-        uint256 hashMerkleRoot = uint256S("0x133af29645aad61eba47f98dacad59298920b580b3ed21ba98266cfdc3002f1e"); // todo generate/update
-        uint32_t nNonce = 25855; //update
+        uint256 hashGenesisBlock = uint256S("0x0000230ae43bcba253c50a0887379c75f2dbe9b26dfb47d51d2557189a9cbc4f"); // todo - update
+        uint256 hashMerkleRoot = uint256S("0x5f48ff7b4ef2d72db0f40e512b6c9f67164d57aa92fff3fac0bf1726bb1eba3a"); // todo generate/update
+        uint32_t nNonce = 286911; //update
 	    
         genesis = CreateGenesisBlockTestnet(nTimestamp, nNonce, 0x1d00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
