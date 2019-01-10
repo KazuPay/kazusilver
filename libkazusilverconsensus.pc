@@ -1,0 +1,11 @@
+prefix=/root/kazusilver/depends/x86_64-w64-mingw32
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: KazuSilver Core consensus library
+Description: Library for the KazuSilver consensus protocol.
+Version: 1.0.1
+Libs: -L${libdir} -lkazusilverconsensus
+Cflags: -I${includedir}
+Requires.private: libcrypto

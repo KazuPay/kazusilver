@@ -108,7 +108,6 @@ UniValue Navtech::FindAnonServer(std::vector<anonServer> anonServers, CAmount nV
   int randIndex = rand() % anonServers.size();
 
   string readBuffer;
-
   curl_global_init(CURL_GLOBAL_ALL);
   curl = curl_easy_init();
 

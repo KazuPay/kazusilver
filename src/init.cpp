@@ -545,8 +545,8 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/KSLVCoin/kazusilver-core>";
-    const std::string URL_WEBSITE = "<https://kazusilver.org>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/kazucoin/kazusilver>";
+    const std::string URL_WEBSITE = "<https://www.kazucoin.io>";
     // todo: remove urls from translations on next change
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
             "\n" +
@@ -856,7 +856,6 @@ void InitLogging()
 
 void DownloadBlockchain(std::string url)
 {
-
     CURL *curl;
     FILE *fp, *a;
     CURLcode res;
