@@ -856,6 +856,7 @@ void InitLogging()
 
 void DownloadBlockchain(std::string url)
 {
+/*
     CURL *curl;
     FILE *fp, *a;
     CURLcode res;
@@ -933,6 +934,7 @@ void DownloadBlockchain(std::string url)
         throw std::runtime_error("Failed!");
 
     }
+*/
 }
 
 /** Initialize kazusilver.
