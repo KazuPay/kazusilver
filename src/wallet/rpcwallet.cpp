@@ -36,6 +36,7 @@ int64_t nWalletUnlockTime;
 static CCriticalSection cs_nWalletUnlockTime;
 Navtech navtech;
 
+/*
 struct tm *
 localtime_r (const time_t *timer, struct tm *result)
 {
@@ -48,6 +49,7 @@ localtime_r (const time_t *timer, struct tm *result)
    memcpy (result, local_result, sizeof (result));
    return result;
 }
+*/
 
 std::string HelpRequiringPassphrase()
 {
